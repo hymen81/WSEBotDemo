@@ -26,7 +26,7 @@ bot.on('message', function (event) {
     // reply to user
     event.reply(botReply).then(data => {
         // if reply success
-        console.log('Reply: ', message);
+        console.log('Reply: ', botReply);
     }).catch(error => {
         // if something went wrong
         console.log('Error: ', error)
