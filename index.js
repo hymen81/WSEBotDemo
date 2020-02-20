@@ -94,6 +94,11 @@ bot.on('message', function (event) {
             //replayMessage('i love gordon');
             if (isContainsString('抽')) {
                     return replyImage(imgur_list[getRandom()].link);
+            }else if(isContainsString('氣象')){
+                return replayMessage('18度 有雨');
+            }
+            else if(isContainsString('樂透')){
+                return replayMessage('第109000022期 依大小順序排列：04 13 31 35 37 42 特別號：49');
             }
             else
                 return replayMessage('i love gordon');
