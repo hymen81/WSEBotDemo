@@ -32,7 +32,7 @@ bot.on('message', function (event) {
     function replyImage(url) {
         event.reply({
             type: 'image',
-            originalContentUrl: url,
+            originalContentUrl: url, 
             previewImageUrl: url
         }).then(function (success) {
             // success
@@ -57,7 +57,7 @@ bot.on('message', function (event) {
             replayMessage('我愛gordon')
         break;
     }
-    
+
 });
 
 const app = express();
