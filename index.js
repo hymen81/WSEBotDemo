@@ -48,22 +48,19 @@ bot.on('message', function (event) {
         });
     }
 
-    replyImage('http://i.imgur.com/yJR8FtF.jpg');
-
     function replayMessage(msg) {
-        event.reply(msg);
+        event.reply(msg).then(data => {
+            // if reply success
+            console.log('Reply: ', msg);
+        }).catch(error => {
+            // if something went wrong
+            console.log('Error: ', error)
+        });;
     }
-    event.reply('dsadsad').then(data => {
-        // if reply success
-        console.log('Reply: ', 'dsadsad');
-    }).catch(error => {
-        // if something went wrong
-        console.log('Error: ', error)
-    });;
+
     switch (event.message.type) {
         case 'text':
-            
-            replayMessage('我愛gordon');
+            replayMessage('i love gordon');
         break;
     }
 
