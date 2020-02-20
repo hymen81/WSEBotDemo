@@ -51,7 +51,13 @@ bot.on('message', function (event) {
     function replayMessage(msg) {
         event.reply(msg);
     }
-    event.reply('dsadsad');
+    event.reply('dsadsad').then(data => {
+        // if reply success
+        console.log('Reply: ', 'dsadsad');
+    }).catch(error => {
+        // if something went wrong
+        console.log('Error: ', error)
+    });;
     switch (event.message.type) {
         case 'text':
             
