@@ -22,7 +22,7 @@ bot.on('message', function (event) {
 
     console.log('groupID:' + event.source.groupId);
     console.log('userId:' + event.source.userId);
-    console.log('message:' + event.source.userId);
+    console.log('message:' + event.message.text);
     
     function isContainsString(str) {
         return event.message.text.toLowerCase().indexOf(str) != -1;
