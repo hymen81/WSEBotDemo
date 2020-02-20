@@ -45,6 +45,9 @@ function getImageListFromImgur() {
     }
 }
 
+function getRandom() {
+    return Math.floor((Math.random() * imgur_list.length));
+}
 
 bot.on('message', function (event) {
 
@@ -88,7 +91,12 @@ bot.on('message', function (event) {
 
     switch (event.message.type) {
         case 'text':
-            replayMessage('i love gordon');
+            //replayMessage('i love gordon');
+            if (isContainsString('抽')) {
+                    return replyImage(imgur_list[getRandom()].link);
+            }
+            else
+                return replayMessage('i love gordon');
         break;
     }
 
