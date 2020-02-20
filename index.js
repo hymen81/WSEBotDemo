@@ -28,8 +28,6 @@ bot.on('message', function (event) {
         return event.message.text.toLowerCase().indexOf(str) != -1;
     }
 
-    userTextToResponseResultMapping['抽,ドロ,doro'] = [imgur_list[getRandom()].link];
-
     function replyImage(url) {
         event.reply({
             type: 'image',
