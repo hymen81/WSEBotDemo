@@ -48,6 +48,8 @@ bot.on('message', function (event) {
         });
     }
 
+    replyImage('http://i.imgur.com/yJR8FtF.jpg');
+
     function replayMessage(msg) {
         event.reply(msg);
     }
