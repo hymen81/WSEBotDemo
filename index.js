@@ -51,9 +51,11 @@ bot.on('message', function (event) {
     function replayMessage(msg) {
         event.reply(msg);
     }
+    event.reply('dsadsad');
     switch (event.message.type) {
         case 'text':
-            replayMessage('我愛gordon')
+            
+            replayMessage('我愛gordon');
         break;
     }
 
