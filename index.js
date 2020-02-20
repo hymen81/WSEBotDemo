@@ -18,19 +18,55 @@ var bot = linebot({
 
 var imgur_list = [];
 
-// linebot message event
 bot.on('message', function (event) {
-    var userInput = event.message.text;
-    var botReply = '你剛剛說了: ' + userInput;
 
-    // reply to user
-    event.reply(botReply).then(data => {
+    console.log('groupID:' + event.source.groupId);
+    console.log('userId:' + event.source.userId);
+    console.log('message:' + event.message.text);
+    
+    function isContainsString(str) {
+        return event.message.text.toLowerCase().indexOf(str) != -1;
+    }
+
+    function replyImage(url) {
+        event.reply({
+            type: 'image',
+            originalContentUrl: url, 
+            previewImageUrl: url
+        }).then(function (success) {
+            // success
+        }).catch(function (error) {
+            replayMessage('Error')
+        });
+    }
+
+    function replyVideo(url) {
+        event.reply({
+            type: 'video',
+            originalContentUrl: url,
+            previewImageUrl: url
+        });
+    }
+
+    replyImage('http://i.imgur.com/yJR8FtF.jpg');
+
+    function replayMessage(msg) {
+        event.reply(msg);
+    }
+    event.reply('dsadsad').then(data => {
         // if reply success
-        console.log('Reply: ', botReply);
+        console.log('Reply: ', 'dsadsad');
     }).catch(error => {
         // if something went wrong
         console.log('Error: ', error)
-    });
+    });;
+    switch (event.message.type) {
+        case 'text':
+            
+            replayMessage('我愛gordon');
+        break;
+    }
+
 });
 
 const app = express();
