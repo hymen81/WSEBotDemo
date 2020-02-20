@@ -3,6 +3,7 @@ var express = require('express');
 var serveIndex = require('serve-index');
 var file = require('fs');
 var http = require('http');
+var https = require('https');
 
 
 var config = JSON.parse(file.readFileSync('config.config', 'utf8'));
