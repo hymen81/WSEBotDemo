@@ -17,6 +17,38 @@ var bot = linebot({
     channelAccessToken: linebot_config.channelAccessToken
 });
 
+var imgur_list = [];
+
+getImageListFromImgur();
+
+function getImageListFromImgur() {
+    for (var i = 0; i < 1; i++) {
+        var options = {
+            hostname: imgur_config.host_name,
+            path: imgur_config.path + i,
+            headers: imgur_config.headers,
+            method: imgur_config.method
+        };
+        var req = https.request(options, function (res) {
+            var chunks = [];
+            res.on("data", function (chunk) {
+                chunks.push(chunk);
+            });
+            res.on("end", function () {
+                var body = Buffer.concat(chunks);
+                var obj = JSON.parse(body.toString());
+                console.log(obj.data.length);
+                imgur_list = imgur_list.concat(obj.data);
+            });
+        });
+        req.end();
+    }
+}
+
+function getRandom() {
+    return Math.floor((Math.random() * imgur_list.length));
+}
+
 bot.on('message', function (event) {
 
     console.log('groupID:' + event.source.groupId);
@@ -59,7 +91,11 @@ bot.on('message', function (event) {
 
     switch (event.message.type) {
         case 'text':
-            replayMessage(event.message.text);    
+            if(isContainsString('抽'))
+                return replyImage(imgur_list[getRandom()].link);
+            else
+                return replayMessage('i love gordon');
+    
         break;
     }
 
@@ -69,6 +105,16 @@ const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
+
+/*app.get('/test', function (req, res) {
+    console.log('groupID:');
+    res.send('test');
+});
+
+app.use(express.static('public'));
+//Serves all the request which includes /images in the url from Images folder
+app.use('/node_modules', express.static(__dirname + '/node_modules'), serveIndex('node_modules', {'icons': true}));
+*/
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log('Port :', port);
