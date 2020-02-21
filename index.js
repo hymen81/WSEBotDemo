@@ -59,7 +59,7 @@ bot.on('message', function (event) {
 
     switch (event.message.type) {
         case 'text':
-            replayMessage(event.message.text);
+            replayMessage(event.message.text);    
         break;
     }
 
