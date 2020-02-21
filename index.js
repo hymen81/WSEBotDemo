@@ -17,7 +17,6 @@ var bot = linebot({
     channelAccessToken: linebot_config.channelAccessToken
 });
 
-
 bot.on('message', function (event) {
 
     console.log('groupID:' + event.source.groupId);
@@ -70,16 +69,6 @@ const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
-
-/*app.get('/test', function (req, res) {
-    console.log('groupID:');
-    res.send('test');
-});
-
-app.use(express.static('public'));
-//Serves all the request which includes /images in the url from Images folder
-app.use('/node_modules', express.static(__dirname + '/node_modules'), serveIndex('node_modules', {'icons': true}));
-*/
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log('Port :', port);
