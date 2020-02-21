@@ -17,37 +17,6 @@ var bot = linebot({
     channelAccessToken: linebot_config.channelAccessToken
 });
 
-var imgur_list = [];
-
-getImageListFromImgur();
-
-function getImageListFromImgur() {
-    for (var i = 0; i < 1; i++) {
-        var options = {
-            hostname: imgur_config.host_name,
-            path: imgur_config.path + i,
-            headers: imgur_config.headers,
-            method: imgur_config.method
-        };
-        var req = https.request(options, function (res) {
-            var chunks = [];
-            res.on("data", function (chunk) {
-                chunks.push(chunk);
-            });
-            res.on("end", function () {
-                var body = Buffer.concat(chunks);
-                var obj = JSON.parse(body.toString());
-                console.log(obj.data.length);
-                imgur_list = imgur_list.concat(obj.data);
-            });
-        });
-        req.end();
-    }
-}
-
-function getRandom() {
-    return Math.floor((Math.random() * imgur_list.length));
-}
 
 bot.on('message', function (event) {
 
