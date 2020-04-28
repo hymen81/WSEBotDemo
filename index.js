@@ -137,7 +137,7 @@ bot.on('message', function (event) {
                     pixivUtils.pixivInitAndDrawPopularImage()
                         .then(value => {
                             console.log(value); // {name: 'xxx.png'}	
-                            var url = 'https://linebotbl.herokuapp.com/images/' + value;
+                            var url = 'https://wse-demo-bot.herokuapp.com/' + value;
                             return event.reply({
                                 type: 'image',
                                 originalContentUrl: url,
