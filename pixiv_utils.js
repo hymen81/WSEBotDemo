@@ -35,18 +35,20 @@ async function pixivInitAndDrawPopularImage() {
 
 }
 
-async function saveImageFromPixivUrl(url) {
-    try {
-        var res;
-        await pixivImg(url,"images/img.jpg").then(output => {
-            //console.log(output);
-            res = output;
-        });
-        return res;
-    } catch (err) {
-        console.log(err);
-    }
-}
+
+async function saveImageFromPixivUrl(url){
+	try {
+    var res;
+	var arr = url.split('/')	
+	await pixivImg(url,"images/"+arr[arr.length-1]).then(output => {
+                //console.log(output);
+                res = output;
+            });
+	return res;
+	}catch(err){
+		console.log(err);  
+	}
+} 
 
 
 function randomDate(start, end) {
