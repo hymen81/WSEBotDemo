@@ -38,7 +38,7 @@ async function pixivInitAndDrawPopularImage() {
 async function saveImageFromPixivUrl(url) {
     try {
         var res;
-        await pixivImg(url).then(output => {
+        await pixivImg(url,"images/img.jpg").then(output => {
             //console.log(output);
             res = output;
         });
