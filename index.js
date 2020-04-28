@@ -145,7 +145,7 @@ bot.on('message', function (event) {
                             });
                         }).catch(error => { console.log('caught', error.message); });
                 }
-	    //AC test 1081115髒髒10連
+	    //AC test 1081115髒髒10連 
  	    if (
                // event.source.groupId == acgmAzurGroup 		
              isContainsString('髒髒十連') 
