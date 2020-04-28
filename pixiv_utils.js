@@ -20,10 +20,10 @@ async function pixivInitAndDrawPopularImage() {
             };
             return pixiv.searchIllustPopularPreview(word, options).then(json => {
 				
-                var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
-				//var img_url = json.illusts[0].image_urls.medium
+                //var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
+				var img_url = json.illusts[0].image_urls.medium
                 res = saveImageFromPixivUrl(img_url);
-               // console.log(randomDate(new Date(), new Date(dateBefore180Days)));          
+                console.log(randomDate(new Date(), new Date(dateBefore180Days)));          
 
 
             })
