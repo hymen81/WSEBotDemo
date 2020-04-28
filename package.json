@@ -1,5 +1,5 @@
 {
-  "name": "githubee",
+  "name": "linebot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "encodings": "^1.0.0",
     "pixiv-api-client": "^0.22.0",
     "pixiv-app-api": "^1.2.1",
-    "pixiv-img": "^1.0.0"
+    "pixiv-img": "^1.0.0",
 	"pixiv-img-dl": "^0.1.3",
     "rimraf": "^2.6.2",
     "serve-index": "^1.9.1"
