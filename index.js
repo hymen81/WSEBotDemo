@@ -143,7 +143,7 @@ bot.on('message', function (event) {
                                 originalContentUrl: url,
                                 previewImageUrl: url
                             });
-                        }).catch(error => { console.log('caught', err.message); });
+                        }).catch(error => { console.log('caught', error.message); });
                 }
 	    //AC test 1081115髒髒10連
  	    if (
