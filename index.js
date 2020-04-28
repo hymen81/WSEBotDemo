@@ -259,6 +259,7 @@ app.get('/test', function (req, res) {
 });
 
 app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.static('files'));
 //Serves all the request which includes /images in the url from Images folder
 app.use('/images', express.static(__dirname + '/images'), serveIndex('images', {'icons': true}));
