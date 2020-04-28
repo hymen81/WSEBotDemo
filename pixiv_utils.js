@@ -17,7 +17,7 @@ async function pixivInitAndDrawPopularImage() {
             var options = {
                 sort: 'date_asc',
                 start_date: randomDate(new Date(dateBefore180Days), dateNow),
-				end_date: dateNow
+				end_date: new Date()
             };
             return pixiv.searchIllustPopularPreview(word, options).then(json => {
 				
