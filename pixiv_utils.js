@@ -13,15 +13,17 @@ async function pixivInitAndDrawPopularImage() {
         var res;
         await pixiv.login('hymen81', '0806449').then(() => {
             var dateNow = new Date();
-            var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 180);
+            var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 700);
             var options = {
                 sort: 'date_asc',
                 start_date: randomDate(new Date(dateBefore180Days), dateNow)
             };
             return pixiv.searchIllustPopularPreview(word, options).then(json => {
-                var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
+				
+                //var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
+				var img_url = json.illusts[0].image_urls.medium
                 res = saveImageFromPixivUrl(img_url);
-                //console.log(img_url);          
+                //console.log(json.illusts.length);          
 
 
             })
