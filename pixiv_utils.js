@@ -16,7 +16,8 @@ async function pixivInitAndDrawPopularImage() {
             var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 700);
             var options = {
                 sort: 'date_asc',
-                start_date: randomDate(new Date(dateBefore180Days), dateNow)
+                start_date: randomDate(new Date(dateBefore180Days), dateNow),
+				end_date: dateNow
             };
             return pixiv.searchIllustPopularPreview(word, options).then(json => {
 				
