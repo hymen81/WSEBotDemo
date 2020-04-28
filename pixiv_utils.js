@@ -8,33 +8,44 @@ const pixivImg = require("pixiv-img")
 const pixiv = new PixivApi();
 
 async function pixivInitAndDrawPopularImage() {
-    const word = 'R-18';
-    var res;
-    await pixiv.login('hymen81', '0806449').then(() => {
-        var dateNow = new Date();
-        var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 180);
-        var options = {
-            sort: 'date_asc',
-            start_date: randomDate(new Date(dateBefore180Days), dateNow)
-        };
-        return pixiv.searchIllustPopularPreview(word, options).then(json => {
-            var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
-            res = saveImageFromPixivUrl(img_url);
-            //console.log(img_url);          
+    try {
+        const word = 'R-18';
+        var res;
+        await pixiv.login('hymen81', '0806449').then(() => {
+            var dateNow = new Date();
+            var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 180);
+            var options = {
+                sort: 'date_asc',
+                start_date: randomDate(new Date(dateBefore180Days), dateNow)
+            };
+            return pixiv.searchIllustPopularPreview(word, options).then(json => {
+                var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
+                res = saveImageFromPixivUrl(img_url);
+                //console.log(img_url);          
 
 
-        })
-    });
-    return res;
+            })
+        });
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
+
+
+
 }
 
 async function saveImageFromPixivUrl(url) {
-    var res;
-    await pixivImg(url).then(output => {
-        //console.log(output);
-        res = output;
-    });
-    return res;
+    try {
+        var res;
+        await pixivImg(url).then(output => {
+            //console.log(output);
+            res = output;
+        });
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 
