@@ -115,7 +115,7 @@ bot.on('message', function (event) {
                // event.source.groupId == acgmAzurGroup 		
              isContainsString('髒圖') 
                 ) {
-                    pixivUtils.pixivInitAndDrawPopularImage()
+                    pixivUtils.pixivInitAndDrawPRankingImage()
                         .then(value => {
                             console.log(value); // {name: 'xxx.png'}	
                             var url = 'https://wse-demo-bot.herokuapp.com/' + value;
