@@ -26,27 +26,9 @@ var bot = linebot({
 
 var imgur_list = [];
 
-//Particular pattern for guys
-var userTextToResponseResultMapping =
-{
-/* '血月大大': ['https://i.imgur.com/hvQhIw7.jpg', 'https://i.imgur.com/Tv8EuUr.jpg'],
- '替身': ['https://i.imgur.com/hccZeuC.jpg', 'https://i.imgur.com/wrKZyui.png', 'https://i.imgur.com/6TeLBoM.jpg'],
- '買': ['https://i.imgur.com/k8IZqXI.jpg', 'https://i.imgur.com/1C6vzkW.jpg', 'https://i.imgur.com/jDQFnGA.jpg', 'https://i.imgur.com/BG9pFSQ.jpg', 'https://i.imgur.com/KOlS7vU.jpg'],
- '怕': ['https://i.imgur.com/NyH6G89.jpg'],
- '吉': ['https://i.imgur.com/RBnAvGq.jpg'],
- '廢球': ['https://i.imgur.com/d5l6IHB.jpg'],
- 'the world': ['https://i.imgur.com/2IZODco.jpg', 'https://i.imgur.com/URsVJ3m.jpg'],
- '吃': ['https://i.imgur.com/SU4uea8.jpg', 'https://i.imgur.com/HxenSJR.png', 'https://i.imgur.com/pEcfeO7.gif',
- 'https://i.imgur.com/jNUAuAp.jpg', 'https://i.imgur.com/0GECLoM.jpg'],
- '53': ['53大雞雞', '53逼母'],
- '快思考,想想': ['https://i.imgur.com/FIC2CK8.jpg'],
- '童貞,統真': ['https://i.imgur.com/63D07no.jpg'],
- '白白熊,泓任': ['https://i.imgur.com/w3ClWm4.jpg']*/
-};
-
 var update_success_msg_string = '梗圖快取更新完成!';
 var azure_maintains_msg_string = '維修中';
-var max_image_page_cache_count = 21;
+var max_image_page_cache_count = 25;
 
 getImageListFromImgur();
 
@@ -98,7 +80,7 @@ bot.on('message', function (event) {
     function isContainsString(str) {
         return event.message.text.toLowerCase().indexOf(str) != -1;
     }
-
+    var userTextToResponseResultMapping = [];
     userTextToResponseResultMapping['抽,ドロ,doro'] = [imgur_list[getRandom()].link];
 
     function replyImage(url) {
@@ -193,7 +175,7 @@ bot.on('message', function (event) {
       			}
 			*/
 			var totalImages = 100000;
-                	var totalTexts  = totalImages;
+            var totalTexts  = totalImages;
 			id = Math.floor(Math.random() * totalImages);
 		        
 		    

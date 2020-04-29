@@ -10,20 +10,20 @@ const pixiv = new PixivApi();
 async function pixivInitAndDrawPopularImage() {
     try {
         const word = 'R-18';
-        var res;
+	var res = {};
         await pixiv.login('hymen81', '0806449').then(() => {
             var dateNow = new Date();
-            var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 360);
+            var dateBefore180Days = dateNow.setDate(dateNow.getDate() - 720);
             var options = {
                 sort: 'date_asc',
                 start_date: randomDate(new Date(), new Date(dateBefore180Days))
             };
             return pixiv.searchIllustPopularPreview(word, options).then(json => {
 				
-                //var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
-				var img_url = json.illusts[0].image_urls.medium
-                res = saveImageFromPixivUrl(img_url);
-                console.log(randomDate(new Date(), new Date(dateBefore180Days)));          
+                var img_url = json.illusts[Math.floor(Math.random() * json.illusts.length)].image_urls.medium
+				//var img_url = json.illusts[0].image_urls.medium
+                res.url = saveImageFromPixivUrl(img_url);
+               // console.log(randomDate(new Date(), new Date(dateBefore180Days)));          
 
 
             })
@@ -32,9 +32,6 @@ async function pixivInitAndDrawPopularImage() {
     } catch (err) {
         console.log(err);
     }
-
-
-
 }
 
 
@@ -51,7 +48,6 @@ async function saveImageFromPixivUrl(url){
 		console.log(err);  
 	}
 } 
-
 
 function randomDate(start, end) {
     var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
