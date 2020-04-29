@@ -11,7 +11,6 @@ const pixivUtils = require('./pixiv_utils');
 const pixiv = require('pixiv-img-dl');
 const url = 'https://i.pximg.net/img-original/img/2017/05/01/23/42/02/62683748_p0.png';
 var rimraf = require('rimraf');
-var pixivImages = file.readFileSync('FlanchanRanking.txt').toString().split("\n");
 
 var config = JSON.parse(file.readFileSync('config.config', 'utf8'));
 
@@ -126,25 +125,6 @@ bot.on('message', function (event) {
                                 previewImageUrl: url
                             });
                         }).catch(error => { console.log('caught', error.message); });
-                }
-	    //AC test 1081115髒髒10連 
- 	    if (  
-               // event.source.groupId == acgmAzurGroup 		
-             isContainsString('髒髒十連') 
-                ) {
-		    for(var i = 0; i < 10; ++i) {
-                      pixiv
-			  .fetch(pixivImages[getRandomWithArray(pixivImages)].replace('\r', ''))
-                          .then(value => {
-                              console.log(value); // {name: 'xxx.png'}	
-                              var url = 'https://linebotbl.herokuapp.com/images/' + value.name;
-                              return event.reply({
-                                  type: 'image',
-                                  originalContentUrl: url,
-                                  previewImageUrl: url
-                              });
-                          });
-		    }
                 }
 
             if (isContainsString('update')) {
